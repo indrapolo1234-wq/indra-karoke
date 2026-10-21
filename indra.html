@@ -1,0 +1,2440 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Indra Karaoke | Premium Entertainment</title>
+
+  <meta
+    name="description"
+    content="Indra Karaoke - Pengalaman karaoke premium dengan ruangan nyaman, audio berkualitas, menu F&B, dan booking online."
+  >
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            poppins: ["Poppins", "sans-serif"],
+            montserrat: ["Montserrat", "sans-serif"]
+          },
+          colors: {
+            neon: {
+              purple: "#a855f7",
+              pink: "#ec4899",
+              cyan: "#06b6d4"
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #050507;
+      color: #f8fafc;
+      overflow-x: hidden;
+    }
+
+    /* =========================
+       BACKGROUND
+    ========================== */
+
+    .hero-bg {
+      background:
+        linear-gradient(
+          90deg,
+          rgba(3, 3, 8, .94) 0%,
+          rgba(8, 4, 15, .78) 48%,
+          rgba(8, 4, 15, .38) 100%
+        ),
+        url("https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=2200&q=90");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .room-bg-1 {
+      background-image:
+        linear-gradient(180deg, transparent 20%, rgba(0,0,0,.9)),
+        url("https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1000&q=85");
+    }
+
+    .room-bg-2 {
+      background-image:
+        linear-gradient(180deg, transparent 20%, rgba(0,0,0,.9)),
+        url("https://images.unsplash.com/photo-1521337581100-8ca9a73a5f79?auto=format&fit=crop&w=1000&q=85");
+    }
+
+    .room-bg-3 {
+      background-image:
+        linear-gradient(180deg, transparent 20%, rgba(0,0,0,.9)),
+        url("https://images.unsplash.com/photo-1545128485-c400e7702796?auto=format&fit=crop&w=1000&q=85");
+    }
+
+    .room-bg-4 {
+      background-image:
+        linear-gradient(180deg, transparent 20%, rgba(0,0,0,.9)),
+        url("https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1000&q=85");
+    }
+
+    /* =========================
+       GLOW
+    ========================== */
+
+    .neon-text {
+      text-shadow:
+        0 0 10px rgba(168,85,247,.65),
+        0 0 30px rgba(236,72,153,.35);
+    }
+
+    .neon-button {
+      box-shadow:
+        0 0 12px rgba(168,85,247,.5),
+        0 0 35px rgba(168,85,247,.22);
+      transition: all .3s ease;
+    }
+
+    .neon-button:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 0 18px rgba(168,85,247,.8),
+        0 0 45px rgba(236,72,153,.4);
+    }
+
+    .cyan-glow {
+      box-shadow:
+        0 0 15px rgba(6,182,212,.25),
+        inset 0 0 15px rgba(6,182,212,.04);
+    }
+
+    /* =========================
+       GLASS
+    ========================== */
+
+    .glass {
+      background: rgba(15,15,23,.72);
+      border: 1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    /* =========================
+       CARDS
+    ========================== */
+
+    .room-card,
+    .feature-card,
+    .food-card {
+      transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+    }
+
+    .room-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(168,85,247,.7);
+      box-shadow:
+        0 0 20px rgba(168,85,247,.22),
+        0 20px 60px rgba(0,0,0,.4);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(6,182,212,.4);
+      box-shadow: 0 0 25px rgba(6,182,212,.12);
+    }
+
+    .food-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(236,72,153,.45);
+    }
+
+    /* =========================
+       REVEAL ANIMATION
+    ========================== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition:
+        opacity .8s ease,
+        transform .8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================
+       FLOATING LIGHTS
+    ========================== */
+
+    .orb {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(70px);
+      pointer-events: none;
+      opacity: .22;
+    }
+
+    .orb-purple {
+      width: 300px;
+      height: 300px;
+      background: #a855f7;
+    }
+
+    .orb-pink {
+      width: 260px;
+      height: 260px;
+      background: #ec4899;
+    }
+
+    .orb-cyan {
+      width: 220px;
+      height: 220px;
+      background: #06b6d4;
+    }
+
+    /* =========================
+       MOBILE MENU
+    ========================== */
+
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease;
+    }
+
+    .mobile-menu.open {
+      max-height: 600px;
+    }
+
+    /* =========================
+       MODAL
+    ========================== */
+
+    .modal {
+      opacity: 0;
+      visibility: hidden;
+      transition: all .3s ease;
+    }
+
+    .modal.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      transform: scale(.95) translateY(20px);
+      transition: all .3s ease;
+    }
+
+    .modal.show .modal-content {
+      transform: scale(1) translateY(0);
+    }
+
+    /* =========================
+       CUSTOM SCROLLBAR
+    ========================== */
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #050507;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(#a855f7, #ec4899);
+      border-radius: 10px;
+    }
+
+    /* =========================
+       RANGE
+    ========================== */
+
+    input[type="range"] {
+      accent-color: #a855f7;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======================================
+       NAVBAR
+  ======================================= -->
+
+  <header
+    id="navbar"
+    class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  >
+
+    <nav class="max-w-7xl mx-auto px-5 lg:px-8">
+
+      <div class="h-20 flex items-center justify-between">
+
+        <!-- LOGO -->
+
+        <a href="#beranda" class="flex items-center gap-3">
+
+          <div
+            class="w-11 h-11 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg shadow-purple-500/30"
+          >
+            <i class="fa-solid fa-microphone-lines text-white text-lg"></i>
+          </div>
+
+          <div>
+            <div class="font-montserrat font-extrabold tracking-wide">
+              INDRA
+            </div>
+
+            <div class="text-[9px] tracking-[.3em] text-purple-300 uppercase">
+              Karaoke
+            </div>
+          </div>
+
+        </a>
+
+
+        <!-- DESKTOP MENU -->
+
+        <div class="hidden lg:flex items-center gap-8 text-sm">
+
+          <a
+            href="#beranda"
+            class="hover:text-purple-400 transition"
+          >
+            Beranda
+          </a>
+
+          <a
+            href="#kamar"
+            class="hover:text-purple-400 transition"
+          >
+            Tipe Kamar
+          </a>
+
+          <a
+            href="#menu"
+            class="hover:text-purple-400 transition"
+          >
+            Menu F&B
+          </a>
+
+          <a
+            href="#promo"
+            class="hover:text-purple-400 transition"
+          >
+            Promo
+          </a>
+
+          <a
+            href="#kontak"
+            class="hover:text-purple-400 transition"
+          >
+            Kontak
+          </a>
+
+        </div>
+
+
+        <!-- CTA -->
+
+        <div class="hidden lg:block">
+
+          <button
+            onclick="openBooking()"
+            class="neon-button bg-gradient-to-r from-purple-600 to-pink-600 px-5 py-3 rounded-full font-semibold text-sm"
+          >
+            <i class="fa-solid fa-calendar-check mr-2"></i>
+            Pesan Kamar Sekarang
+          </button>
+
+        </div>
+
+
+        <!-- MOBILE BUTTON -->
+
+        <button
+          id="menuButton"
+          class="lg:hidden w-11 h-11 rounded-xl glass flex items-center justify-center"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+      </div>
+
+
+      <!-- MOBILE MENU -->
+
+      <div id="mobileMenu" class="mobile-menu lg:hidden">
+
+        <div class="glass rounded-2xl p-5 mb-4">
+
+          <div class="flex flex-col gap-4 text-sm">
+
+            <a href="#beranda" class="mobile-link">
+              Beranda
+            </a>
+
+            <a href="#kamar" class="mobile-link">
+              Tipe Kamar
+            </a>
+
+            <a href="#menu" class="mobile-link">
+              Menu F&B
+            </a>
+
+            <a href="#promo" class="mobile-link">
+              Promo
+            </a>
+
+            <a href="#kontak" class="mobile-link">
+              Kontak
+            </a>
+
+            <button
+              onclick="openBooking()"
+              class="bg-gradient-to-r from-purple-600 to-pink-600 py-3 rounded-xl font-semibold"
+            >
+              Pesan Kamar Sekarang
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+
+  <!-- ======================================
+       HERO
+  ======================================= -->
+
+  <section
+    id="beranda"
+    class="hero-bg min-h-screen relative flex items-center overflow-hidden"
+  >
+
+    <div class="orb orb-purple -top-20 -left-20"></div>
+    <div class="orb orb-pink bottom-0 right-0"></div>
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 w-full pt-24 relative z-10">
+
+      <div class="max-w-3xl">
+
+        <div
+          class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full text-xs mb-7"
+        >
+
+          <span class="w-2 h-2 bg-pink-500 rounded-full animate-pulse"></span>
+
+          Premium Karaoke & Entertainment
+
+        </div>
+
+
+        <h1
+          class="font-montserrat font-extrabold text-5xl sm:text-6xl lg:text-7xl leading-[1.05] neon-text"
+        >
+
+          Ekspresikan
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400">
+            Suaramu
+          </span>
+
+          di Indra Karaoke.
+
+        </h1>
+
+
+        <p
+          class="mt-7 text-lg lg:text-xl text-gray-300 max-w-2xl leading-relaxed"
+        >
+          Nikmati pengalaman bernyanyi tak terlupakan dengan sistem audio
+          kelas dunia, ruangan nyaman, pencahayaan spektakuler,
+          dan pilihan lagu terlengkap.
+        </p>
+
+
+        <div class="flex flex-wrap gap-4 mt-9">
+
+          <a
+            href="#kamar"
+            class="neon-button bg-gradient-to-r from-purple-600 to-pink-600 px-7 py-4 rounded-full font-bold"
+          >
+            Lihat Pilihan Kamar
+            <i class="fa-solid fa-arrow-right ml-2"></i>
+          </a>
+
+
+          <a
+            href="#promo"
+            class="px-7 py-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-md hover:bg-white/10 transition font-semibold"
+          >
+            <i class="fa-solid fa-fire text-pink-400 mr-2"></i>
+            Cek Promo Hari Ini
+          </a>
+
+        </div>
+
+
+        <!-- STATS -->
+
+        <div class="grid grid-cols-3 gap-5 max-w-xl mt-14">
+
+          <div>
+            <div class="font-montserrat font-bold text-2xl lg:text-3xl">
+              100K+
+            </div>
+
+            <div class="text-xs text-gray-400 mt-1">
+              Pilihan Lagu
+            </div>
+          </div>
+
+
+          <div>
+            <div class="font-montserrat font-bold text-2xl lg:text-3xl">
+              24/7
+            </div>
+
+            <div class="text-xs text-gray-400 mt-1">
+              Entertainment
+            </div>
+          </div>
+
+
+          <div>
+            <div class="font-montserrat font-bold text-2xl lg:text-3xl">
+              4.9/5
+            </div>
+
+            <div class="text-xs text-gray-400 mt-1">
+              Customer Rating
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="absolute bottom-7 left-1/2 -translate-x-1/2 animate-bounce text-white/50">
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+
+  </section>
+
+
+  <!-- ======================================
+       FEATURES
+  ======================================= -->
+
+  <section class="py-24 bg-[#08080d] relative overflow-hidden">
+
+    <div class="orb orb-cyan -right-20 top-20"></div>
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 relative">
+
+      <div class="text-center max-w-2xl mx-auto reveal">
+
+        <div class="text-cyan-400 uppercase tracking-[.25em] text-xs font-bold">
+          Why Choose Us
+        </div>
+
+        <h2 class="font-montserrat font-bold text-4xl lg:text-5xl mt-4">
+          Lebih dari Sekadar
+          <span class="text-purple-400">
+            Karaoke.
+          </span>
+        </h2>
+
+        <p class="text-gray-400 mt-5">
+          Kami menghadirkan kombinasi teknologi, kenyamanan,
+          dan pelayanan untuk menciptakan malam yang sempurna.
+        </p>
+
+      </div>
+
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-14">
+
+        <!-- Feature 1 -->
+
+        <div class="feature-card glass rounded-3xl p-7 reveal">
+
+          <div
+            class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center text-2xl"
+          >
+            <i class="fa-solid fa-volume-high"></i>
+          </div>
+
+          <h3 class="font-bold text-lg mt-6">
+            Audio Sistem Mutakhir
+          </h3>
+
+          <p class="text-gray-500 text-sm leading-relaxed mt-3">
+            Sistem audio berkualitas tinggi dengan teknologi
+            JBL/Bose untuk suara yang jernih dan powerful.
+          </p>
+
+        </div>
+
+
+        <!-- Feature 2 -->
+
+        <div class="feature-card glass rounded-3xl p-7 reveal">
+
+          <div
+            class="w-14 h-14 rounded-2xl bg-pink-500/10 border border-pink-500/20 text-pink-400 flex items-center justify-center text-2xl"
+          >
+            <i class="fa-solid fa-music"></i>
+          </div>
+
+          <h3 class="font-bold text-lg mt-6">
+            100.000+ Pilihan Lagu
+          </h3>
+
+          <p class="text-gray-500 text-sm leading-relaxed mt-3">
+            Koleksi lagu Indonesia, Barat, Korea, Jepang,
+            dan berbagai genre terbaru.
+          </p>
+
+        </div>
+
+
+        <!-- Feature 3 -->
+
+        <div class="feature-card glass rounded-3xl p-7 reveal">
+
+          <div
+            class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center text-2xl"
+          >
+            <i class="fa-solid fa-sparkles"></i>
+          </div>
+
+          <h3 class="font-bold text-lg mt-6">
+            Higienis & Nyaman
+          </h3>
+
+          <p class="text-gray-500 text-sm leading-relaxed mt-3">
+            Ruangan dibersihkan secara rutin dengan sofa nyaman
+            dan ambience premium.
+          </p>
+
+        </div>
+
+
+        <!-- Feature 4 -->
+
+        <div class="feature-card glass rounded-3xl p-7 reveal">
+
+          <div
+            class="w-14 h-14 rounded-2xl bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center text-2xl"
+          >
+            <i class="fa-solid fa-utensils"></i>
+          </div>
+
+          <h3 class="font-bold text-lg mt-6">
+            F&B Super Cepat
+          </h3>
+
+          <p class="text-gray-500 text-sm leading-relaxed mt-3">
+            Pesan makanan dan minuman favorit langsung
+            dari dalam ruangan.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================
+       ROOM CATEGORIES
+  ======================================= -->
+
+  <section id="kamar" class="py-24 lg:py-32 bg-[#050507]">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+      <div class="flex flex-col lg:flex-row justify-between lg:items-end gap-7 reveal">
+
+        <div>
+
+          <div class="text-purple-400 uppercase tracking-[.25em] text-xs font-bold">
+            Room Categories
+          </div>
+
+          <h2 class="font-montserrat font-bold text-4xl lg:text-5xl mt-4">
+            Pilih Ruanganmu.
+          </h2>
+
+        </div>
+
+        <p class="text-gray-400 max-w-md">
+          Dari sesi intimate bersama teman dekat hingga pesta besar,
+          kami memiliki ruangan yang sesuai kebutuhanmu.
+        </p>
+
+      </div>
+
+
+      <!-- ROOM GRID -->
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
+
+
+        <!-- SMALL -->
+
+        <article class="room-card glass rounded-3xl overflow-hidden reveal">
+
+          <div class="room-bg-1 h-72 bg-cover bg-center relative">
+
+            <div class="absolute top-4 left-4">
+              <span class="bg-purple-600/90 px-3 py-1.5 rounded-full text-xs font-semibold">
+                SMALL
+              </span>
+            </div>
+
+            <div class="absolute bottom-5 left-5 right-5">
+
+              <div class="text-xs text-gray-300">
+                1 - 4 Orang
+              </div>
+
+              <h3 class="font-montserrat font-bold text-2xl">
+                Small Room
+              </h3>
+
+            </div>
+
+          </div>
+
+
+          <div class="p-6">
+
+            <div class="text-gray-400 text-sm">
+              Mulai dari
+            </div>
+
+            <div class="text-2xl font-bold mt-1">
+              Rp50.000
+              <span class="text-sm font-normal text-gray-500">
+                /jam
+              </span>
+            </div>
+
+            <div class="space-y-2 mt-5 text-xs text-gray-400">
+
+              <div>
+                <i class="fa-solid fa-check text-purple-400 mr-2"></i>
+                Audio Premium
+              </div>
+
+              <div>
+                <i class="fa-solid fa-check text-purple-400 mr-2"></i>
+                Smart TV
+              </div>
+
+              <div>
+                <i class="fa-solid fa-check text-purple-400 mr-2"></i>
+                Lighting Control
+              </div>
+
+            </div>
+
+            <button
+              onclick="selectRoom('Small Room')"
+              class="w-full mt-6 border border-purple-500/40 hover:bg-purple-500 hover:border-purple-500 transition py-3 rounded-xl text-sm font-semibold"
+            >
+              Pilih Kamar
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <!-- MEDIUM -->
+
+        <article class="room-card glass rounded-3xl overflow-hidden reveal">
+
+          <div class="room-bg-2 h-72 bg-cover bg-center relative">
+
+            <div class="absolute top-4 left-4">
+              <span class="bg-pink-600/90 px-3 py-1.5 rounded-full text-xs font-semibold">
+                POPULAR
+              </span>
+            </div>
+
+            <div class="absolute bottom-5 left-5 right-5">
+
+              <div class="text-xs text-gray-300">
+                4 - 8 Orang
+              </div>
+
+              <h3 class="font-montserrat font-bold text-2xl">
+                Medium Room
+              </h3>
+
+            </div>
+
+          </div>
+
+
+          <div class="p-6">
+
+            <div class="text-gray-400 text-sm">
+              Mulai dari
+            </div>
+
+            <div class="text-2xl font-bold mt-1">
+              Rp85.000
+              <span class="text-sm font-normal text-gray-500">
+                /jam
+              </span>
+            </div>
+
+            <div class="space-y-2 mt-5 text-xs text-gray-400">
+
+              <div>
+                <i class="fa-solid fa-check text-pink-400 mr-2"></i>
+                Premium Audio
+              </div>
+
+              <div>
+                <i class="fa-solid fa-check text-pink-400 mr-2"></i>
+                Sofa Premium
+              </div>
+
+              <div>
+                <i class="fa-solid fa-check text-pink-400 mr-2"></i>
+                Disco Lighting
+              </div>
+
+            </div>
+
+            <button
+              onclick="selectRoom('Medium Room')"
+              class="w-full mt-6 bg-gradient-to-r from-purple-600 to-pink-600 py-3 rounded-xl text-sm font-semibold neon-button"
+            >
+              Pilih Kamar
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <!-- LARGE -->
+
+        <article class="room-card glass rounded-3xl overflow-hidden reveal">
+
+          <div class="room-bg-3 h-72 bg-cover bg-center relative">
+
+            <div class="absolute top-4 left-4">
+              <span class="bg-cyan-600/90 px-3 py-1.5 rounded-full text-xs font-semibold">
+                GROUP
+              </span>
+            </div>
+
+            <div class="absolute bottom-5 left-5 right-5">
+
+              <div class="text-xs text-gray-300">
+                8 - 12 Orang
+              </div>
+
+              <h3 class="font-montserrat font-bold text-2xl">
+                Large Room
+              </h3>
+
+            </div>
+
+          </div>
+
+
+          <div class="p-6">
+
+            <div class="text-gray-400 text-sm">
+              Mulai dari
+            </div>
+
+            <div class="text-2xl font-bold mt-1">
+              Rp125.000
+              <span class="text-sm font-normal text-gray-500">
+                /jam
+              </span>
+            </div>
+
+            <div class="space-y-2 mt-5 text-xs text-gray-400">
+
+              <div>
+                <i class="fa-solid fa-check text-cyan-400 mr-2"></i>
+                JBL/Bose Audio
+              </div>
+
+              <div>
+                <i class="fa-solid fa-check text-cyan-400 mr-2"></i>
+                Large Sofa
+              </div>
+
+              <div>
+                <i class="fa-solid fa-check text-cyan-400 mr-2"></i>
+                Party Lighting
+              </div>
+
+            </div>
+
+            <button
+              onclick="selectRoom('Large Room')"
+              class="w-full mt-6 border border-cyan-500/40 hover:bg-cyan-500 transition py-3 rounded-xl text-sm font-semibold"
+            >
+              Pilih Kamar
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <!-- VIP -->
+
+        <article class="room-card glass rounded-3xl overflow-hidden reveal">
+
+          <div class="room-bg-4 h-72 bg-cover bg-center relative">
+
+            <div class="absolute top-4 left-4">
+              <span class="bg-gradient-to-r from-yellow-500 to-orange-500 px-3 py-1.5 rounded-full text-xs font-bold">
+                VIP / VVIP
+              </span>
+            </div>
+
+            <div class="absolute bottom-5 left-5 right-5">
+
+              <div class="text-xs text-gray-300">
+                15+ Orang
+              </div>
+
+              <h3 class="font-montserrat font-bold text-2xl">
+                VIP Suite
+              </h3>
+
+            </div>
+
+          </div>
+
+
+          <div class="p-6">
+
+            <div class="text-gray-400 text-sm">
+              Mulai dari
+            </div>
+
+            <div class="text-2xl font-bold mt-1">
+              Rp250.000
+              <span class="text-sm font-normal text-gray-500">
+                /jam
+              </span>
+            </div>
+
+            <div class="space-y-2 mt-5 text-xs text-gray-400">
+
+              <div>
+                <i class="fa-solid fa-check text-yellow-400 mr-2"></i>
+                Audio Kelas Premium
+              </div>
+
+              <div>
+                <i class="fa-solid fa-check text-yellow-400 mr-2"></i>
+                Sofa Mewah
+              </div>
+
+              <div>
+                <i class="fa-solid fa-check text-yellow-400 mr-2"></i>
+                Kamar Mandi Dalam
+              </div>
+
+            </div>
+
+            <button
+              onclick="selectRoom('VIP / VVIP Suite')"
+              class="w-full mt-6 bg-gradient-to-r from-yellow-500 to-orange-500 text-black py-3 rounded-xl text-sm font-bold hover:shadow-lg hover:shadow-yellow-500/20 transition"
+            >
+              Pilih VIP Suite
+            </button>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================
+       F&B
+  ======================================= -->
+
+  <section id="menu" class="py-24 bg-[#09090f]">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+      <div class="text-center max-w-2xl mx-auto reveal">
+
+        <div class="text-pink-400 uppercase tracking-[.25em] text-xs font-bold">
+          Food & Beverage
+        </div>
+
+        <h2 class="font-montserrat font-bold text-4xl lg:text-5xl mt-4">
+          Teman Nyanyi Terbaik.
+        </h2>
+
+        <p class="text-gray-400 mt-5">
+          Lengkapi sesi karaoke dengan makanan ringan,
+          minuman segar, dan sajian favorit lainnya.
+        </p>
+
+      </div>
+
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
+
+
+        <!-- FOOD 1 -->
+
+        <div class="food-card glass rounded-3xl overflow-hidden reveal">
+
+          <img
+            src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=800&q=85"
+            alt="Kentang Goreng"
+            class="w-full h-52 object-cover"
+          >
+
+          <div class="p-5">
+
+            <div class="flex justify-between gap-3">
+
+              <h3 class="font-bold">
+                Kentang Goreng
+              </h3>
+
+              <span class="text-pink-400 font-bold">
+                Rp25K
+              </span>
+
+            </div>
+
+            <p class="text-gray-500 text-xs mt-2">
+              Crispy fries dengan pilihan saus.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- FOOD 2 -->
+
+        <div class="food-card glass rounded-3xl overflow-hidden reveal">
+
+          <img
+            src="https://images.unsplash.com/photo-1585647347483-22b66260dfff?auto=format&fit=crop&w=800&q=85"
+            alt="Popcorn Platter"
+            class="w-full h-52 object-cover"
+          >
+
+          <div class="p-5">
+
+            <div class="flex justify-between gap-3">
+
+              <h3 class="font-bold">
+                Popcorn Platter
+              </h3>
+
+              <span class="text-pink-400 font-bold">
+                Rp30K
+              </span>
+
+            </div>
+
+            <p class="text-gray-500 text-xs mt-2">
+              Popcorn gurih untuk sharing bersama teman.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- FOOD 3 -->
+
+        <div class="food-card glass rounded-3xl overflow-hidden reveal">
+
+          <img
+            src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=85"
+            alt="Mocktail"
+            class="w-full h-52 object-cover"
+          >
+
+          <div class="p-5">
+
+            <div class="flex justify-between gap-3">
+
+              <h3 class="font-bold">
+                Neon Mocktail
+              </h3>
+
+              <span class="text-cyan-400 font-bold">
+                Rp35K
+              </span>
+
+            </div>
+
+            <p class="text-gray-500 text-xs mt-2">
+              Mocktail segar dengan sensasi citrus.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- FOOD 4 -->
+
+        <div class="food-card glass rounded-3xl overflow-hidden reveal">
+
+          <img
+            src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=800&q=85"
+            alt="Jus Segar"
+            class="w-full h-52 object-cover"
+          >
+
+          <div class="p-5">
+
+            <div class="flex justify-between gap-3">
+
+              <h3 class="font-bold">
+                Fresh Juice
+              </h3>
+
+              <span class="text-purple-400 font-bold">
+                Rp28K
+              </span>
+
+            </div>
+
+            <p class="text-gray-500 text-xs mt-2">
+              Pilihan jus buah segar untuk menemani bernyanyi.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================
+       PROMO
+  ======================================= -->
+
+  <section id="promo" class="py-24 bg-[#050507] relative overflow-hidden">
+
+    <div class="orb orb-purple -left-40 top-10"></div>
+    <div class="orb orb-pink right-0 bottom-0"></div>
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 relative">
+
+      <div class="grid lg:grid-cols-2 gap-7 items-center">
+
+        <div class="reveal">
+
+          <div class="text-pink-400 uppercase tracking-[.25em] text-xs font-bold">
+            Special Offer
+          </div>
+
+          <h2 class="font-montserrat font-extrabold text-4xl lg:text-6xl mt-4">
+            Happy Hour
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">
+              Night.
+            </span>
+          </h2>
+
+          <p class="text-gray-400 mt-5 max-w-xl leading-relaxed">
+            Nikmati harga spesial untuk sesi karaoke di jam tertentu.
+            Cocok untuk after office, hangout, atau night party bersama teman.
+          </p>
+
+          <div class="flex gap-3 mt-8">
+
+            <div class="glass rounded-2xl px-5 py-4 text-center">
+              <div id="countHours" class="text-2xl font-bold">04</div>
+              <div class="text-[10px] text-gray-500">JAM</div>
+            </div>
+
+            <div class="glass rounded-2xl px-5 py-4 text-center">
+              <div id="countMinutes" class="text-2xl font-bold">30</div>
+              <div class="text-[10px] text-gray-500">MENIT</div>
+            </div>
+
+            <div class="glass rounded-2xl px-5 py-4 text-center">
+              <div id="countSeconds" class="text-2xl font-bold">00</div>
+              <div class="text-[10px] text-gray-500">DETIK</div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="glass rounded-[2rem] p-8 lg:p-10 reveal border border-pink-500/20">
+
+          <div class="flex items-start justify-between gap-5">
+
+            <div>
+
+              <div class="text-xs text-pink-400 font-bold uppercase">
+                Promo Mingguan
+              </div>
+
+              <h3 class="font-montserrat font-bold text-3xl mt-2">
+                Buy 2 Hours
+              </h3>
+
+              <p class="text-gray-400 text-sm mt-2">
+                Gratis 1 jam tambahan.
+              </p>
+
+            </div>
+
+            <div class="text-4xl text-pink-400">
+              <i class="fa-solid fa-ticket"></i>
+            </div>
+
+          </div>
+
+          <div class="border-t border-white/10 my-7"></div>
+
+          <div class="flex justify-between items-center">
+
+            <div>
+
+              <div class="text-gray-500 text-sm">
+                Kode Promo
+              </div>
+
+              <div class="font-mono text-xl text-cyan-400 font-bold mt-1">
+                INDRA2PLUS1
+              </div>
+
+            </div>
+
+            <button
+              onclick="copyPromo()"
+              class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 transition text-sm"
+            >
+              <i class="fa-regular fa-copy mr-2"></i>
+              Salin
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================
+       BOOKING + CONTACT
+  ======================================= -->
+
+  <section id="kontak" class="py-24 lg:py-32 bg-[#09090f]">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
+
+        <!-- CONTACT -->
+
+        <div class="reveal">
+
+          <div class="text-cyan-400 uppercase tracking-[.25em] text-xs font-bold">
+            Contact & Location
+          </div>
+
+          <h2 class="font-montserrat font-bold text-4xl lg:text-5xl mt-4">
+            Let's Make
+            <span class="text-purple-400">
+              Some Noise.
+            </span>
+          </h2>
+
+          <p class="text-gray-400 mt-5 leading-relaxed">
+            Hubungi kami untuk reservasi, informasi paket,
+            event, birthday party, atau corporate gathering.
+          </p>
+
+
+          <div class="space-y-5 mt-10">
+
+            <!-- ADDRESS -->
+
+            <div class="flex gap-4">
+
+              <div class="w-12 h-12 rounded-xl glass flex items-center justify-center text-purple-400 shrink-0">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+
+              <div>
+
+                <div class="font-semibold">
+                  Alamat Cabang
+                </div>
+
+                <p class="text-gray-500 text-sm mt-1 leading-relaxed">
+                  Jl. Entertainment No. 88,<br>
+                  Pusat Kota, Indonesia
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <!-- HOURS -->
+
+            <div class="flex gap-4">
+
+              <div class="w-12 h-12 rounded-xl glass flex items-center justify-center text-pink-400 shrink-0">
+                <i class="fa-solid fa-clock"></i>
+              </div>
+
+              <div>
+
+                <div class="font-semibold">
+                  Jam Operasional
+                </div>
+
+                <p class="text-gray-500 text-sm mt-1">
+                  Setiap Hari · 11.00 - 02.00 WIB
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <!-- WHATSAPP -->
+
+            <div class="flex gap-4">
+
+              <div class="w-12 h-12 rounded-xl glass flex items-center justify-center text-green-400 shrink-0">
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+
+              <div>
+
+                <div class="font-semibold">
+                  WhatsApp Booking
+                </div>
+
+                <a
+                  href="https://wa.me/6281234567890"
+                  target="_blank"
+                  class="text-green-400 text-sm mt-1 inline-block hover:text-green-300"
+                >
+                  +62 812-3456-7890
+                </a>
+
+              </div>
+
+            </div>
+
+
+            <!-- SOCIAL -->
+
+            <div class="flex gap-4">
+
+              <div class="w-12 h-12 rounded-xl glass flex items-center justify-center text-cyan-400 shrink-0">
+                <i class="fa-solid fa-hashtag"></i>
+              </div>
+
+              <div>
+
+                <div class="font-semibold">
+                  Social Media
+                </div>
+
+                <div class="flex gap-4 mt-2">
+
+                  <a
+                    href="#"
+                    class="text-gray-500 hover:text-pink-400 transition"
+                  >
+                    <i class="fa-brands fa-instagram text-lg"></i>
+                  </a>
+
+                  <a
+                    href="#"
+                    class="text-gray-500 hover:text-cyan-400 transition"
+                  >
+                    <i class="fa-brands fa-tiktok text-lg"></i>
+                  </a>
+
+                  <a
+                    href="#"
+                    class="text-gray-500 hover:text-blue-400 transition"
+                  >
+                    <i class="fa-brands fa-facebook text-lg"></i>
+                  </a>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- BOOKING FORM -->
+
+        <div class="reveal">
+
+          <div class="glass rounded-[2rem] p-7 lg:p-9 border border-purple-500/20">
+
+            <div class="flex items-center gap-4 mb-7">
+
+              <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center">
+                <i class="fa-solid fa-calendar-check"></i>
+              </div>
+
+              <div>
+
+                <h3 class="font-montserrat font-bold text-2xl">
+                  Booking Kamar
+                </h3>
+
+                <p class="text-gray-500 text-xs mt-1">
+                  Isi data reservasi Anda.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <form id="bookingForm" class="space-y-5">
+
+              <!-- NAME -->
+
+              <div>
+
+                <label class="block text-sm font-semibold mb-2">
+                  Nama
+                </label>
+
+                <input
+                  id="bookingName"
+                  type="text"
+                  required
+                  placeholder="Nama lengkap"
+                  class="w-full bg-white/5 border border-white/10 focus:border-purple-500 rounded-xl px-4 py-3.5 outline-none transition"
+                >
+
+              </div>
+
+
+              <!-- WHATSAPP -->
+
+              <div>
+
+                <label class="block text-sm font-semibold mb-2">
+                  Nomor WhatsApp
+                </label>
+
+                <input
+                  id="bookingPhone"
+                  type="tel"
+                  required
+                  placeholder="08xxxxxxxxxx"
+                  class="w-full bg-white/5 border border-white/10 focus:border-purple-500 rounded-xl px-4 py-3.5 outline-none transition"
+                >
+
+              </div>
+
+
+              <div class="grid sm:grid-cols-2 gap-4">
+
+                <!-- DATE -->
+
+                <div>
+
+                  <label class="block text-sm font-semibold mb-2">
+                    Tanggal
+                  </label>
+
+                  <input
+                    id="bookingDate"
+                    type="date"
+                    required
+                    class="w-full bg-white/5 border border-white/10 focus:border-purple-500 rounded-xl px-4 py-3.5 outline-none transition"
+                  >
+
+                </div>
+
+
+                <!-- TIME -->
+
+                <div>
+
+                  <label class="block text-sm font-semibold mb-2">
+                    Jam Datang
+                  </label>
+
+                  <input
+                    id="bookingTime"
+                    type="time"
+                    required
+                    class="w-full bg-white/5 border border-white/10 focus:border-purple-500 rounded-xl px-4 py-3.5 outline-none transition"
+                  >
+
+                </div>
+
+              </div>
+
+
+              <div class="grid sm:grid-cols-2 gap-4">
+
+                <!-- ROOM -->
+
+                <div>
+
+                  <label class="block text-sm font-semibold mb-2">
+                    Tipe Kamar
+                  </label>
+
+                  <select
+                    id="bookingRoom"
+                    required
+                    class="w-full bg-[#111119] border border-white/10 focus:border-purple-500 rounded-xl px-4 py-3.5 outline-none transition"
+                  >
+
+                    <option value="">
+                      Pilih kamar
+                    </option>
+
+                    <option>
+                      Small Room
+                    </option>
+
+                    <option>
+                      Medium Room
+                    </option>
+
+                    <option>
+                      Large Room
+                    </option>
+
+                    <option>
+                      VIP / VVIP Suite
+                    </option>
+
+                  </select>
+
+                </div>
+
+
+                <!-- DURATION -->
+
+                <div>
+
+                  <label class="block text-sm font-semibold mb-2">
+                    Durasi
+                  </label>
+
+                  <select
+                    id="bookingDuration"
+                    required
+                    class="w-full bg-[#111119] border border-white/10 focus:border-purple-500 rounded-xl px-4 py-3.5 outline-none transition"
+                  >
+
+                    <option value="">
+                      Pilih durasi
+                    </option>
+
+                    <option value="1">
+                      1 Jam
+                    </option>
+
+                    <option value="2">
+                      2 Jam
+                    </option>
+
+                    <option value="3">
+                      3 Jam
+                    </option>
+
+                    <option value="4">
+                      4 Jam
+                    </option>
+
+                    <option value="5">
+                      5 Jam
+                    </option>
+
+                  </select>
+
+                </div>
+
+              </div>
+
+
+              <!-- NOTES -->
+
+              <div>
+
+                <label class="block text-sm font-semibold mb-2">
+                  Catatan Tambahan
+                </label>
+
+                <textarea
+                  id="bookingNote"
+                  rows="3"
+                  placeholder="Contoh: birthday party, request ruangan tertentu, dll."
+                  class="w-full bg-white/5 border border-white/10 focus:border-purple-500 rounded-xl px-4 py-3.5 outline-none transition resize-none"
+                ></textarea>
+
+              </div>
+
+
+              <!-- SUBMIT -->
+
+              <button
+                type="submit"
+                class="neon-button w-full bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 py-4 rounded-xl font-bold"
+              >
+                <i class="fa-brands fa-whatsapp mr-2"></i>
+                Booking via WhatsApp
+              </button>
+
+
+              <p class="text-center text-xs text-gray-600">
+                Data reservasi akan diteruskan ke WhatsApp tim Indra Karaoke.
+              </p>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================
+       FOOTER
+  ======================================= -->
+
+  <footer class="bg-[#030305] border-t border-white/5">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-12">
+
+      <div class="flex flex-col md:flex-row justify-between gap-8">
+
+        <div>
+
+          <div class="flex items-center gap-3">
+
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+              <i class="fa-solid fa-microphone-lines"></i>
+            </div>
+
+            <div>
+
+              <div class="font-montserrat font-extrabold">
+                INDRA KARAOKE
+              </div>
+
+              <div class="text-[9px] tracking-[.3em] text-gray-600 uppercase">
+                Premium Entertainment
+              </div>
+
+            </div>
+
+          </div>
+
+          <p class="text-gray-600 text-sm max-w-md mt-5">
+            Sing loud. Sing proud. Create unforgettable memories
+            bersama Indra Karaoke.
+          </p>
+
+        </div>
+
+
+        <div class="flex gap-3">
+
+          <a
+            href="#"
+            class="w-10 h-10 rounded-full bg-white/5 hover:bg-pink-500 transition flex items-center justify-center"
+          >
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+
+          <a
+            href="#"
+            class="w-10 h-10 rounded-full bg-white/5 hover:bg-cyan-500 transition flex items-center justify-center"
+          >
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
+
+          <a
+            href="https://wa.me/6281234567890"
+            target="_blank"
+            class="w-10 h-10 rounded-full bg-white/5 hover:bg-green-500 transition flex items-center justify-center"
+          >
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="border-t border-white/5 mt-10 pt-7 flex flex-col md:flex-row justify-between gap-3 text-xs text-gray-700">
+
+        <div>
+          © 2026 Indra Karaoke. All Rights Reserved.
+        </div>
+
+        <div>
+          Premium Karaoke · F&B · Entertainment
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- ======================================
+       BOOKING MODAL
+  ======================================= -->
+
+  <div
+    id="bookingModal"
+    class="modal fixed inset-0 z-[100] bg-black/80 backdrop-blur-md flex items-center justify-center p-5"
+  >
+
+    <div
+      class="modal-content glass rounded-3xl w-full max-w-lg p-7 relative border border-purple-500/30"
+    >
+
+      <button
+        onclick="closeBooking()"
+        class="absolute right-5 top-5 w-10 h-10 rounded-full bg-white/5 hover:bg-white/10"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+
+      <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center text-xl">
+        <i class="fa-solid fa-calendar-check"></i>
+      </div>
+
+
+      <h3 class="font-montserrat font-bold text-3xl mt-5">
+        Pesan Kamar
+      </h3>
+
+      <p class="text-gray-500 text-sm mt-2">
+        Isi data singkat dan lanjutkan booking melalui WhatsApp.
+      </p>
+
+
+      <form id="modalBookingForm" class="space-y-4 mt-7">
+
+        <input
+          id="modalName"
+          type="text"
+          required
+          placeholder="Nama"
+          class="w-full bg-white/5 border border-white/10 focus:border-purple-500 rounded-xl px-4 py-3.5 outline-none"
+        >
+
+
+        <input
+          id="modalPhone"
+          type="tel"
+          required
+          placeholder="Nomor WhatsApp"
+          class="w-full bg-white/5 border border-white/10 focus:border-purple-500 rounded-xl px-4 py-3.5 outline-none"
+        >
+
+
+        <div class="grid grid-cols-2 gap-4">
+
+          <input
+            id="modalDate"
+            type="date"
+            required
+            class="w-full bg-white/5 border border-white/10 focus:border-purple-500 rounded-xl px-4 py-3.5 outline-none"
+          >
+
+          <input
+            id="modalTime"
+            type="time"
+            required
+            class="w-full bg-white/5 border border-white/10 focus:border-purple-500 rounded-xl px-4 py-3.5 outline-none"
+          >
+
+        </div>
+
+
+        <select
+          id="modalRoom"
+          required
+          class="w-full bg-[#111119] border border-white/10 focus:border-purple-500 rounded-xl px-4 py-3.5 outline-none"
+        >
+
+          <option value="">
+            Pilih tipe kamar
+          </option>
+
+          <option>
+            Small Room
+          </option>
+
+          <option>
+            Medium Room
+          </option>
+
+          <option>
+            Large Room
+          </option>
+
+          <option>
+            VIP / VVIP Suite
+          </option>
+
+        </select>
+
+
+        <select
+          id="modalDuration"
+          required
+          class="w-full bg-[#111119] border border-white/10 focus:border-purple-500 rounded-xl px-4 py-3.5 outline-none"
+        >
+
+          <option value="">
+            Durasi
+          </option>
+
+          <option value="1">
+            1 Jam
+          </option>
+
+          <option value="2">
+            2 Jam
+          </option>
+
+          <option value="3">
+            3 Jam
+          </option>
+
+          <option value="4">
+            4 Jam
+          </option>
+
+        </select>
+
+
+        <button
+          type="submit"
+          class="neon-button w-full bg-gradient-to-r from-purple-600 to-pink-600 py-4 rounded-xl font-bold"
+        >
+          <i class="fa-brands fa-whatsapp mr-2"></i>
+          Lanjutkan Booking
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- ======================================
+       TOAST
+  ======================================= -->
+
+  <div
+    id="toast"
+    class="fixed bottom-6 right-6 z-[200] translate-y-24 opacity-0 transition-all duration-300"
+  >
+
+    <div class="glass rounded-2xl px-5 py-4 shadow-2xl flex items-center gap-3">
+
+      <div class="w-9 h-9 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center">
+        <i class="fa-solid fa-check"></i>
+      </div>
+
+      <div>
+
+        <div class="font-semibold text-sm">
+          Berhasil
+        </div>
+
+        <div
+          id="toastText"
+          class="text-xs text-gray-500"
+        >
+          Data berhasil diproses.
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ======================================
+       JAVASCRIPT
+  ======================================= -->
+
+  <script>
+
+    /* =========================
+       MOBILE MENU
+    ========================== */
+
+    const menuButton = document.getElementById("menuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    menuButton.addEventListener("click", () => {
+
+      mobileMenu.classList.toggle("open");
+
+      const icon = menuButton.querySelector("i");
+
+      if (mobileMenu.classList.contains("open")) {
+
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-xmark");
+
+      } else {
+
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+
+      }
+
+    });
+
+
+    document.querySelectorAll(".mobile-link").forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        mobileMenu.classList.remove("open");
+
+        const icon = menuButton.querySelector("i");
+
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+
+      });
+
+    });
+
+
+    /* =========================
+       NAVBAR SCROLL
+    ========================== */
+
+    const navbar = document.getElementById("navbar");
+
+    window.addEventListener("scroll", () => {
+
+      if (window.scrollY > 50) {
+
+        navbar.classList.add(
+          "bg-[#050507]/85",
+          "backdrop-blur-xl",
+          "border-b",
+          "border-white/5"
+        );
+
+      } else {
+
+        navbar.classList.remove(
+          "bg-[#050507]/85",
+          "backdrop-blur-xl",
+          "border-b",
+          "border-white/5"
+        );
+
+      }
+
+    });
+
+
+    /* =========================
+       SCROLL REVEAL
+    ========================== */
+
+    const revealObserver = new IntersectionObserver(
+      entries => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("active");
+
+            revealObserver.unobserve(entry.target);
+
+          }
+
+        });
+
+      },
+      {
+        threshold: .12
+      }
+    );
+
+
+    document.querySelectorAll(".reveal").forEach(element => {
+      revealObserver.observe(element);
+    });
+
+
+    /* =========================
+       BOOKING MODAL
+    ========================== */
+
+    const bookingModal =
+      document.getElementById("bookingModal");
+
+
+    function openBooking() {
+
+      bookingModal.classList.add("show");
+
+      document.body.style.overflow = "hidden";
+
+    }
+
+
+    function closeBooking() {
+
+      bookingModal.classList.remove("show");
+
+      document.body.style.overflow = "";
+
+    }
+
+
+    bookingModal.addEventListener("click", event => {
+
+      if (event.target === bookingModal) {
+        closeBooking();
+      }
+
+    });
+
+
+    document.addEventListener("keydown", event => {
+
+      if (event.key === "Escape") {
+        closeBooking();
+      }
+
+    });
+
+
+    /* =========================
+       SELECT ROOM
+    ========================== */
+
+    function selectRoom(roomName) {
+
+      openBooking();
+
+      setTimeout(() => {
+
+        document.getElementById("modalRoom").value = roomName;
+
+      }, 100);
+
+    }
+
+
+    /* =========================
+       WHATSAPP NUMBER
+       GANTI DENGAN NOMOR ASLI
+    ========================== */
+
+    const whatsappNumber = "6281234567890";
+
+
+    /* =========================
+       MAIN BOOKING FORM
+    ========================== */
+
+    const bookingForm =
+      document.getElementById("bookingForm");
+
+
+    bookingForm.addEventListener("submit", event => {
+
+      event.preventDefault();
+
+
+      const name =
+        document.getElementById("bookingName").value.trim();
+
+      const phone =
+        document.getElementById("bookingPhone").value.trim();
+
+      const date =
+        document.getElementById("bookingDate").value;
+
+      const time =
+        document.getElementById("bookingTime").value;
+
+      const room =
+        document.getElementById("bookingRoom").value;
+
+      const duration =
+        document.getElementById("bookingDuration").value;
+
+      const note =
+        document.getElementById("bookingNote").value.trim();
+
+
+      if (
+        !name ||
+        !phone ||
+        !date ||
+        !time ||
+        !room ||
+        !duration
+      ) {
+
+        showToast("Mohon lengkapi data booking.");
+
+        return;
+
+      }
+
+
+      const message =
+`Halo Indra Karaoke 👋
+
+Saya ingin melakukan reservasi kamar.
+
+DETAIL BOOKING
+-------------------------
+Nama: ${name}
+WhatsApp: ${phone}
+Tanggal: ${date}
+Jam Datang: ${time}
+Tipe Kamar: ${room}
+Durasi: ${duration} Jam
+
+Catatan:
+${note || "-"}
+
+Mohon konfirmasi ketersediaan kamar.
+
+Terima kasih.`;
+
+
+      const whatsappURL =
+        `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+
+      window.open(whatsappURL, "_blank");
+
+    });
+
+
+    /* =========================
+       MODAL BOOKING FORM
+    ========================== */
+
+    const modalBookingForm =
+      document.getElementById("modalBookingForm");
+
+
+    modalBookingForm.addEventListener("submit", event => {
+
+      event.preventDefault();
+
+
+      const name =
+        document.getElementById("modalName").value.trim();
+
+      const phone =
+        document.getElementById("modalPhone").value.trim();
+
+      const date =
+        document.getElementById("modalDate").value;
+
+      const time =
+        document.getElementById("modalTime").value;
+
+      const room =
+        document.getElementById("modalRoom").value;
+
+      const duration =
+        document.getElementById("modalDuration").value;
+
+
+      if (
+        !name ||
+        !phone ||
+        !date ||
+        !time ||
+        !room ||
+        !duration
+      ) {
+
+        showToast("Mohon lengkapi semua data.");
+
+        return;
+
+      }
+
+
+      const message =
+`Halo Indra Karaoke 👋
+
+Saya ingin booking kamar.
+
+Nama: ${name}
+WhatsApp: ${phone}
+Tanggal: ${date}
+Jam: ${time}
+Tipe Kamar: ${room}
+Durasi: ${duration} Jam
+
+Mohon konfirmasi ketersediaannya.
+
+Terima kasih.`;
+
+
+      const whatsappURL =
+        `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+
+      window.open(whatsappURL, "_blank");
+
+      closeBooking();
+
+    });
+
+
+    /* =========================
+       MIN DATE = TODAY
+    ========================== */
+
+    const today =
+      new Date().toISOString().split("T")[0];
+
+
+    document.getElementById("bookingDate").min = today;
+    document.getElementById("modalDate").min = today;
+
+
+    /* =========================
+       PROMO COPY
+    ========================== */
+
+    function copyPromo() {
+
+      navigator.clipboard.writeText("INDRA2PLUS1")
+        .then(() => {
+
+          showToast("Kode promo berhasil disalin.");
+
+        })
+        .catch(() => {
+
+          showToast("Kode promo: INDRA2PLUS1");
+
+        });
+
+    }
+
+
+    /* =========================
+       TOAST
+    ========================== */
+
+    function showToast(message) {
+
+      const toast =
+        document.getElementById("toast");
+
+      const toastText =
+        document.getElementById("toastText");
+
+
+      toastText.textContent = message;
+
+
+      toast.classList.remove(
+        "translate-y-24",
+        "opacity-0"
+      );
+
+
+      setTimeout(() => {
+
+        toast.classList.add(
+          "translate-y-24",
+          "opacity-0"
+        );
+
+      }, 3000);
+
+    }
+
+
+    /* =========================
+       PROMO COUNTDOWN
+    ========================== */
+
+    let countdownSeconds =
+      (4 * 60 * 60) + (30 * 60);
+
+
+    function updateCountdown() {
+
+      if (countdownSeconds <= 0) {
+
+        countdownSeconds = 0;
+
+      }
+
+
+      const hours =
+        Math.floor(countdownSeconds / 3600);
+
+      const minutes =
+        Math.floor((countdownSeconds % 3600) / 60);
+
+      const seconds =
+        countdownSeconds % 60;
+
+
+      document.getElementById("countHours")
+        .textContent =
+        String(hours).padStart(2, "0");
+
+
+      document.getElementById("countMinutes")
+        .textContent =
+        String(minutes).padStart(2, "0");
+
+
+      document.getElementById("countSeconds")
+        .textContent =
+        String(seconds).padStart(2, "0");
+
+
+      if (countdownSeconds > 0) {
+        countdownSeconds--;
+      }
+
+    }
+
+
+    updateCountdown();
+
+    setInterval(updateCountdown, 1000);
+
+
+    /* =========================
+       CLOSE MODAL WITH ESC
+    ========================== */
+
+    window.addEventListener("keydown", event => {
+
+      if (event.key === "Escape") {
+
+        closeBooking();
+
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
+```
